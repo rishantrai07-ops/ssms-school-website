@@ -1,16 +1,19 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import AboutPreview from "../components/AboutPreview";
+import Facilities from "../components/Facilities";
+import Stats from "../components/stats";
+import WhyChooseUs from "../components/WhyChooseUs";
+import PrincipalMessage from "../components/PrincipalMessage";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-
-      <main>
-        <h1>Welcome to SSMS School</h1>
-      </main>
-
-      <Footer />
+      <Hero />
+      <AboutPreview />
+      <Stats />
+      <Facilities />
+      <WhyChooseUs />
+      <PrincipalMessage />
     </>
   );
 }
