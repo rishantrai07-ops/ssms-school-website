@@ -1,4 +1,4 @@
-
+import PageHeader from "../../components/PageHeader";
 
 export default function AboutPage() {
   return (
@@ -7,7 +7,7 @@ export default function AboutPage() {
 
       <main className="max-w-7xl mx-auto px-6 py-20">
         <h1 className="text-4xl font-bold mb-6">
-          About SSMS School
+          About Sunshine Model School
         </h1>
 
         <p className="text-lg">

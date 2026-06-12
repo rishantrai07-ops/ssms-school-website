@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SSMS School",
-  description: "Official Website of SSMS School",
+  title: "Sunshine Model School",
+  description:
+    "Official website of Sunshine Model School.",
 };
 
 export default function RootLayout({
