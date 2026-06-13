@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { schoolInfo } from "../lib/SchoolData";
 
-export default function Footer(): JSX.Element {
+export default function Footer() {
   return (
     <footer className="bg-[#800020] text-white">
       <div className="max-w-7xl mx-auto px-6 py-16">
