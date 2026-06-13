@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { schoolInfo } from "../lib/SchoolData";
 
@@ -16,80 +15,59 @@ export default function Navbar() {
     { href: "/academics", label: "Academics" },
     { href: "/admissions", label: "Admissions" },
     { href: "/gallery", label: "Gallery" },
+    { href: "/notices", label: "Notices" },
     { href: "/contact", label: "Contact" },
   ];
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-        {/* Logo + School Name */}
-        <Link
-          href="/"
-          className="flex items-center gap-3"
-        >
-          <div className="w-10 h-10 bg-[#800020] rounded-full flex items-center justify-center text-white font-bold">
-            S
-          </div>
-
-          <div>
-            <h1 className="text-xl md:text-2xl font-bold text-[#800020]">
-              {schoolInfo.name}
-            </h1>
-
-            <p className="text-xs text-gray-500">
-              {schoolInfo.motto}
-            </p>
-          </div>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`transition ${
-                pathname === link.href
-                  ? "text-[#800020] font-semibold"
-                  : "text-gray-700 hover:text-[#800020]"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          <Link
-            href="/admissions"
-            className="bg-[#800020] text-white px-4 py-2 rounded-lg hover:bg-[#650019] transition"
-          >
-            Admissions Open
-          </Link>
-        </div>
-
-        {/* Mobile Button */}
-        <button
-          className="md:hidden text-3xl"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? "✕" : "☰"}
-        </button>
+    <>
+      {/* Announcement Bar */}
+      <div className="bg-[#800020] text-white text-center py-2 text-sm font-medium">
+        🏆 Celebrating 25 Years of Educational Excellence • Admissions Open for Session 2026-27
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t">
-          <div className="flex flex-col p-4 gap-4">
+      <nav className="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 border-b">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+          {/* Logo + School Name */}
+          <Link
+            href="/"
+            className="flex items-center gap-4"
+          >
+            <div className="w-14 h-14 bg-[#800020] rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md">
+              S
+            </div>
+
+            <div>
+              <h1 className="text-xl md:text-3xl font-bold text-[#800020] leading-tight">
+                {schoolInfo.name}
+              </h1>
+
+              <div className="flex items-center gap-2 flex-wrap">
+
+                <p className="text-xs md:text-sm text-gray-500">
+                  {schoolInfo.motto}
+                </p>
+
+                <span className="bg-yellow-400 text-black text-[10px] md:text-xs px-2 py-1 rounded-full font-bold">
+                  🏆 25 Years
+                </span>
+
+              </div>
+            </div>
+          </Link>
+
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center gap-7">
 
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`${
+                className={`transition-all duration-300 ${
                   pathname === link.href
-                    ? "text-[#800020] font-semibold"
-                    : "text-gray-700"
+                    ? "text-[#800020] font-bold border-b-2 border-[#800020] pb-1"
+                    : "text-gray-700 hover:text-[#800020]"
                 }`}
               >
                 {link.label}
@@ -98,14 +76,57 @@ export default function Navbar() {
 
             <Link
               href="/admissions"
-              onClick={() => setIsOpen(false)}
-              className="bg-[#800020] text-white px-4 py-2 rounded-lg text-center"
+              className="bg-[#800020] text-white px-5 py-3 rounded-xl hover:bg-[#650019] transition shadow-md"
             >
               Admissions Open
             </Link>
+
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-3xl text-[#800020]"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? "✕" : "☰"}
+          </button>
+
         </div>
-      )}
-    </nav>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="lg:hidden bg-white border-t shadow-lg">
+
+            <div className="flex flex-col p-6 gap-5">
+
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg ${
+                    pathname === link.href
+                      ? "text-[#800020] font-bold"
+                      : "text-gray-700"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              <Link
+                href="/admissions"
+                onClick={() => setIsOpen(false)}
+                className="bg-[#800020] text-white px-4 py-3 rounded-xl text-center"
+              >
+                Admissions Open
+              </Link>
+
+            </div>
+
+          </div>
+        )}
+      </nav>
+    </>
   );
 }

@@ -1,9 +1,9 @@
 export default function Stats() {
   const stats = [
-    { number: "1200+", label: "Students" },
-    { number: "80+", label: "Faculty Members" },
+    { number: "400+", label: "Students" },
+    { number: "15+", label: "Faculty Members" },
     { number: "25+", label: "Years of Excellence" },
-    { number: "100%", label: "Board Results" },
+    
   ];
 
   return (

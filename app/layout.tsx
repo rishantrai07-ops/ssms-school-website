@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SchoolChatbot from "../components/SchoolChatbot";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,21 +19,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Sunshine Model School",
-  description:
-    "Official website of Sunshine Model School.",
+  description: "Official website of Sunshine Model School",
 };
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: RootLayoutProps): React.JSX.Element {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-gray-50">
         <Navbar />
 
         <main className="flex-grow">
@@ -38,6 +42,8 @@ export default function RootLayout({
         </main>
 
         <Footer />
+
+        <SchoolChatbot />
       </body>
     </html>
   );

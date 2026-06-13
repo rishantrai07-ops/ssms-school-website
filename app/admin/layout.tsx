@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabase";
 import LogoutButton from "../../components/LogoutButton";
@@ -10,23 +10,37 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    async function checkUser() {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        window.location.replace("/login");
+        return;
+      }
+
+      setLoading(false);
+    }
+
     checkUser();
   }, []);
 
-  async function checkUser() {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
-    if (!session) {
-      window.location.href = "/admin/login";
-    }
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-xl font-semibold">
+          Loading Admin Panel...
+        </p>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen bg-gray-100">
-
       <div className="flex">
 
         {/* Sidebar */}
@@ -67,10 +81,10 @@ export default function AdminLayout({
             </Link>
 
             <Link
-            href="/admin/gallery"
-            className="block hover:text-gray-200"
+              href="/admin/gallery"
+              className="block hover:text-gray-200"
             >
-                Gallery
+              Gallery
             </Link>
 
           </nav>
@@ -87,7 +101,6 @@ export default function AdminLayout({
         </main>
 
       </div>
-
     </div>
   );
 }

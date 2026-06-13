@@ -6,4 +6,6 @@ export const schoolInfo = {
   address: "Hatipotha Bazaar, Alipurduar, West Bengal- 736201",
   principal: "Mr. Basant Rai",
   established: "2000",
+  googleMapsLink:
+  "https://www.google.com/maps/search/?api=1&query=Sunshine+Model+School+Hatipotha+Bazaar+Alipurduar+West+Bengal+736201"
 };

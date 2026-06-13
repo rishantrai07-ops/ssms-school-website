@@ -21,9 +21,9 @@ export default function ContactPage() {
       .insert([formData]);
 
     if (error) {
-        console.error("SUPABASE ERROR:", error);
-        alert(error.message);
-        return;
+      console.error(error);
+      alert(error.message);
+      return;
     }
 
     alert("Message sent successfully!");
@@ -40,137 +40,215 @@ export default function ContactPage() {
     <>
       <PageHeader
         title="Contact Us"
-        description="Get in touch with Sunshine Model School."
+        description="We're here to answer your questions and help you connect with Sunshine Model School."
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-2 gap-12">
+      <main className="max-w-7xl mx-auto px-6 py-20">
 
-          {/* Contact Information */}
-          <div>
-            <h2 className="text-3xl font-bold mb-6">
-              Contact Information
-            </h2>
+        {/* Contact Cards */}
+        <section className="mb-20">
 
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-semibold text-lg">
-                  Address
-                </h3>
-                <p>{schoolInfo.address}</p>
-              </div>
+          <div className="grid md:grid-cols-3 gap-6">
 
-              <div>
-                <h3 className="font-semibold text-lg">
-                  Phone
-                </h3>
-                <p>{schoolInfo.phone}</p>
-              </div>
+            <div className="bg-white rounded-3xl p-8 shadow-sm border text-center">
+              <div className="text-5xl mb-4">📞</div>
 
-              <div>
-                <h3 className="font-semibold text-lg">
-                  Email
-                </h3>
-                <p>{schoolInfo.email}</p>
-              </div>
+              <h3 className="text-2xl font-bold mb-3 text-[#800020]">
+                Phone
+              </h3>
 
-              <div>
-                <h3 className="font-semibold text-lg">
-                  Office Hours
-                </h3>
-                <p>Monday - Friday</p>
-                <p>8:00 AM - 4:00 PM</p>
-              </div>
+              <p>{schoolInfo.phone}</p>
             </div>
+
+            <div className="bg-white rounded-3xl p-8 shadow-sm border text-center">
+              <div className="text-5xl mb-4">📧</div>
+
+              <h3 className="text-2xl font-bold mb-3 text-[#800020]">
+                Email
+              </h3>
+
+              <p>{schoolInfo.email}</p>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 shadow-sm border text-center">
+              <div className="text-5xl mb-4">📍</div>
+
+              <h3 className="text-2xl font-bold mb-3 text-[#800020]">
+                Address
+              </h3>
+
+              <p>{schoolInfo.address}</p>
+            </div>
+
           </div>
 
-          {/* Contact Form */}
-          <div>
-            <h2 className="text-3xl font-bold mb-6">
-              Send a Message
-            </h2>
+        </section>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Contact Form + Office Hours */}
+        <section className="mb-20">
 
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    name: e.target.value,
-                  })
-                }
-                className="w-full border p-4 rounded-lg"
-                required
-              />
+          <div className="grid lg:grid-cols-3 gap-10">
 
-              <input
-                type="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    email: e.target.value,
-                  })
-                }
-                className="w-full border p-4 rounded-lg"
-                required
-              />
+            {/* Form */}
+            <div className="lg:col-span-2 bg-white rounded-3xl shadow-sm border p-10">
 
-              <input
-                type="text"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    subject: e.target.value,
-                  })
-                }
-                className="w-full border p-4 rounded-lg"
-                required
-              />
+              <h2 className="text-4xl font-bold mb-6 text-[#800020]">
+                Send a Message
+              </h2>
 
-              <textarea
-                placeholder="Message"
-                rows={5}
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    message: e.target.value,
-                  })
-                }
-                className="w-full border p-4 rounded-lg"
-                required
-              />
-
-              <button
-                type="submit"
-                className="bg-[#800020] text-white px-8 py-3 rounded-lg"
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6"
               >
-                Send Message
-              </button>
 
-            </form>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      name: e.target.value,
+                    })
+                  }
+                  className="w-full border p-4 rounded-xl"
+                  required
+                />
+
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      email: e.target.value,
+                    })
+                  }
+                  className="w-full border p-4 rounded-xl"
+                  required
+                />
+
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  value={formData.subject}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      subject: e.target.value,
+                    })
+                  }
+                  className="w-full border p-4 rounded-xl"
+                  required
+                />
+
+                <textarea
+                  rows={6}
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      message: e.target.value,
+                    })
+                  }
+                  className="w-full border p-4 rounded-xl"
+                  required
+                />
+
+                <button
+                  type="submit"
+                  className="bg-[#800020] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#650019] transition"
+                >
+                  Send Message
+                </button>
+
+              </form>
+
+            </div>
+
+            {/* Office Hours */}
+            <div className="bg-[#800020] text-white rounded-3xl p-10">
+
+              <h2 className="text-3xl font-bold mb-8">
+                Office Hours
+              </h2>
+
+              <div className="space-y-6">
+
+                <div>
+                  <h3 className="font-semibold text-lg">
+                    Monday - Friday
+                  </h3>
+
+                  <p>10:00 AM - 3:00 PM</p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-lg">
+                    Saturday
+                  </h3>
+
+                  <p>10:00 AM - 12:00 PM</p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-lg">
+                    Sunday
+                  </h3>
+
+                  <p>Closed</p>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
-        </div>
+        </section>
 
-        {/* Map Placeholder */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-bold mb-6">
-            Location
-          </h2>
+        {/* Location */}
+<section>
 
-          <div className="bg-gray-200 h-96 rounded-xl flex items-center justify-center">
-            Google Map will be added here
-          </div>
-        </div>
-      </div>
+  <div className="bg-gray-50 rounded-3xl p-10">
+
+    <h2 className="text-4xl font-bold text-center mb-8 text-[#800020]">
+      Find Us
+    </h2>
+
+    <div className="overflow-hidden rounded-2xl shadow-lg">
+
+      <iframe
+        src="https://maps.google.com/maps?q=Sunshine%20Model%20School%20Hatipotha%20Bazaar%20Alipurduar%20West%20Bengal%20736201&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="450"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+
+    </div>
+
+    <div className="text-center mt-6">
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Sunshine+Model+School+Hatipotha+Bazaar+Alipurduar+West+Bengal+736201"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block bg-[#800020] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#650019] transition"
+      >
+        📍 Get Directions
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+      </main>
     </>
   );
 }

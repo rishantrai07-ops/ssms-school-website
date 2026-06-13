@@ -12,8 +12,6 @@ export default function Home() {
     <>
       <Hero />
 
-      <QuickStats />
-
       <AboutPreview />
 
       <WhyChooseUs />
@@ -21,8 +19,6 @@ export default function Home() {
       <Facilities />
 
       <PrincipalMessage />
-
-      <LatestNotices />
 
       <AdmissionsCTA />
     </>
